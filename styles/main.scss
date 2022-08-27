@@ -1,9 +1,10 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
 
   background: rgb(163, 208, 219);
   background: linear-gradient(
@@ -17,7 +18,35 @@ body {
   );
 }
 
+header {
+  width: 100%;
 
+}
+
+nav {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-login-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 120px;
+
+
+}
+
+
+// nav {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// }
 
 #map {
   height: 400px;
