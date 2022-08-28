@@ -1,7 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   min-height: 100vh;
 
@@ -17,7 +17,14 @@ body {
   );
 }
 
-#map {
-  height: 400px;
-  width: 600px;
+#map-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
+
+// #map {
+//   height: 200px;
+//   width: 300px;
+//   margin: 5px;
+//   border-radius: 10px;
+// }
