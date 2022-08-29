@@ -15,7 +15,7 @@ VALUES (1, 1, 'Big Ben', 'The classic one you all know and love', 'https://uploa
 -- Values for third map ((3, 'Good dispensaries', 'Canada', 'Toronto', 43.6532, 79.3832, '2022-07-03'))
        (3, 3, 'ShinyBuds Cannabis', 'A great dispensary with a great selection', 'https://lh5.googleusercontent.com/p/AF1QipMBMFpT5JMJ2o5xkUOGQu_2HR17en4zvT8dg897=w408-h306-k-no', 43.711628846940215, -79.53156539291942, '2022-07-03'),
        (3, 3, 'Sessions Cannabis', 'Friendly staff, great bud', 'https://lh5.googleusercontent.com/p/AF1QipNDAQ2mtzNqQgd3FzeHno5InRPM4TGcZWlw1SRS=w408-h306-k-no', 43.73370412470473, -79.53311460362227, '2022-07-03'),
-       (3, 3, 'Utopia Cannabis', 'A true utopia for the green', 'https://lh5.googleusercontent.com/p/AF1QipO3Bysy_oHBGDhSJ0xQ7gyGU-pC2pCx-eRQligr=w408-h306-k-no', 43.741726419258434, -79.31803967085865 '2022-07-03'),
+       (3, 3, 'Utopia Cannabis', 'A true utopia for the green', 'https://lh5.googleusercontent.com/p/AF1QipO3Bysy_oHBGDhSJ0xQ7gyGU-pC2pCx-eRQligr=w408-h306-k-no', 43.741726419258434, -79.31803967085865, '2022-07-03'),
 
 -- Values for fourth map ((4, 'Nice beaches', 'United States', 'Miami', 25.7617, 80.1918, '2021-09-04'))
        (4, 4, 'South Pointe Beach', 'A great beach with a great atmosphere', 'https://lh5.googleusercontent.com/p/AF1QipMs0PVundRTVEA46gxp0MEkyvopTedGBXugM_Qk=w408-h306-k-no', 25.767209341487664, -80.13077672074935, '2021-09-04'),
