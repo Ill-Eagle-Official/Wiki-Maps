@@ -32,14 +32,26 @@ nav {
   align-items: center;
 }
 
+.nav-brand {
+  font-family: 'Lobster';
+  font-size: 30px;
+}
+
+.nav-link-logged-in {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .nav-login-register {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 120px;
-
-
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 150px;
 }
+
 
 
 // nav {

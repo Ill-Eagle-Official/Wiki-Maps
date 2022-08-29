@@ -4,13 +4,45 @@
       <a class="nav-brand" href="/">Wiki-Maps</a>
     </div>
 
-    <div class="nav-login-register" id="navbarNavAltMarkup">
+
+
+    <% if (false) { %>
+      <div class="nav-link-logged-in">
+        <div>
+          <a class="nav-item nav-link" href="/">View All</a>
+        </div>
+        <div>
+          <a class="nav-item nav-link" href="/maps/new">Create a Map</a>
+        </div>
+        <div>
+          <a class="nav-item nav-link" href="/faovourites">Favourites</a>
+        </div>
+        <div>
+          <a class="nav-item nav-link" href="/maps">Someone's Maps</a>
+        </div>
+      </div>
+
+
+    <% } else { %>
+      <div class="nav-login-register">
+        <div>
+          <a class="nav-item nav-link" href="/login">Login</a>
+        </div>
+        <div>
+          <a class="nav-item nav-link" href="/register">Register</a>
+        </div>
+      </div>
+    <% } %>
+
+<!--
       <div>
         <a class="nav-item nav-link" href="/login">Login</a>
       </div>
       <div>
         <a class="nav-item nav-link" href="/register">Register</a>
-      </div>
+      </div> -->
+
+
     </div>
 
   </nav>
