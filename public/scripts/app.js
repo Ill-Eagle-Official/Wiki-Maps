@@ -1,64 +1,19 @@
 // Client facing scripts here
+$(document).ready(function() {
 
-const fakeMaps = {
-  vancouver: {
-    latitude: 49.246,
-    longitude: -123.116,
-    zoom: 11
-  },
-  moscow: {
-    latitude: 55.751,
-    longitude: 37.618,
-    zoom: 11
-  },
-  cairo: {
-    latitude: 30.033,
-    longitude: 31.233,
-    zoom: 11
-  },
-  berlin: {
-    latitude: 52.520,
-    longitude: 13.404,
-    zoom: 11
-  },
-  thunderBay: {
-    latitude: 48.382,
-    longitude: -89.246,
-    zoom: 11
-  },
-  tainan: {
-    latitude: 22.999,
-    longitude: 120.227,
-    zoom: 11
-  },
-  manila: {
-    latitude: 14.599,
-    longitude: 120.984,
-    zoom: 11
-  },
-  saoPaulo: {
-    latitude: -23.533,
-    longitude: -46.625,
-    zoom: 11
-  },
-  perth: {
-    latitude: -31.953,
-    longitude: 115.857,
-    zoom: 11
-  },
-};
+  const renderMaps = function(db) {
 
-$(document).ready(function () {
+    for (let mapData of db) {
 
-  const renderMaps = function () {
+      console.log(mapData);
 
-    for (let city in fakeMaps) {
+      $('#map-row').append(`
+        <div id="map-box" style="background-color: white; border-radius: 8px; margin: 10px; padding: 5px; padding-bottom: 30px;">
+          <div id="map-${mapData.city}" style="height: 200px; width: 300px; margin: 5px; border: 0.25px solid lightgray; border-radius: 8px"></div>
+        </div>
+      `);
 
-      $('#map-row').append(`<div id="map-${city}" style="height: 200px; width: 300px; margin: 5px; border-radius: 8px"></div>`);
-
-      console.log(fakeMaps[city]);
-
-      let map = L.map('map-' + city).setView([fakeMaps[city].latitude, fakeMaps[city].longitude], fakeMaps[city].zoom);
+      let map = L.map('map-' + mapData.city).setView([mapData.latitude, mapData.longitude], 12);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -67,5 +22,10 @@ $(document).ready(function () {
     }
   };
 
-  renderMaps();
-})
+  const loadMaps = function() {
+    $.ajax('/api/maps', { method: 'GET' })
+    .then(renderMaps);
+  };
+
+  loadMaps();
+});
