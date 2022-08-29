@@ -32,7 +32,7 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const mapsRoutes = require('./routes/maps');
-const mapPageRoutes = require('./routes/map-page');
+const mapPageRoutes = require('./routes/map_page');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
