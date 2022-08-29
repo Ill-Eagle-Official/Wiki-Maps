@@ -60,7 +60,19 @@ nav {
   text-decoration: none;
 }
 
-#map {
-  height: 400px;
-  width: 600px;
+#map-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#map-box {
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 5px;
+  padding-bottom: 30px;
+}
+
+#map-box:hover {
+  box-shadow: 3px 3px dimgrey;
 }
