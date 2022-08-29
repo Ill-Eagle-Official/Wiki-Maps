@@ -28,8 +28,9 @@
 
     <main class="conatiner">
 
-        <h1>Map</h1>
-        <div id = "map">
+    <h1>Map</h1>
+      <div id = "map">
+        <!-- This will be an actual map rendered from the DB -->
         <script>
 
           var map = L.map('map').setView([49.246, -123.116], 11);
@@ -41,9 +42,12 @@
 
           var marker = L.marker([49.246, -123.116]).addTo(map);
           marker.bindPopup("Leaflet is cool").openPopup();
-
         </script>
-        </div>
+      </div>
+      <div id ="submitBtn">
+        <textarea id="text" name="text" placeholder="Enter your title here..."></textarea>
+        <a href="/"><button type="button" class="btn btn-primary">Save</button></a>
+      </div>
     </main>
 
 
