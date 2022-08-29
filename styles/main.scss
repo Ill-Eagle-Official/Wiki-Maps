@@ -20,7 +20,6 @@ body {
 
 header {
   width: 100%;
-
 }
 
 nav {
@@ -35,6 +34,7 @@ nav {
 .nav-brand {
   font-family: 'Lobster';
   font-size: 30px;
+  color: black;
 }
 
 .nav-link-logged-in {
@@ -42,6 +42,8 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   font-family: 'Source Sans Pro', sans-serif;
+  width: 500px;
+  color: black;
 }
 
 .nav-login-register {
@@ -52,6 +54,9 @@ nav {
   width: 150px;
 }
 
+.nav-item {
+  color: black;
+}
 
 
 // nav {
