@@ -8,7 +8,7 @@ $(document).ready(function() {
       console.log(mapData);
 
       $('#map-row').append(`
-        <div id="map-box" style="background-color: white; border-radius: 8px; margin: 10px; padding: 5px; padding-bottom: 30px;">
+        <div id="map-box">
           <div id="map-${mapData.city}" style="height: 200px; width: 300px; margin: 5px; border: 0.25px solid lightgray; border-radius: 8px"></div>
         </div>
       `);
