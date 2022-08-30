@@ -10,8 +10,9 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
     <link rel="stylesheet" href="/vendor/border-box.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
+    <!-- <link rel="stylesheet" href="/styles/main.css" /> -->
     <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/map_view.css" />
 
      <!-- Leaflet CSS -->
 
@@ -30,6 +31,7 @@
     <main class="container">
 
     <h1>Map</h1>
+    <div id="map-container">
       <div id = "map">
         <!-- This will be an actual map rendered from the DB -->
         <script>
@@ -45,6 +47,7 @@
           marker.bindPopup("Leaflet is cool").openPopup();
         </script>
       </div>
+    </div>
       <div id ="submitBtn">
         <textarea id="text" name="text" placeholder="Enter your title here..."></textarea>
         <a href="/"><button type="button" class="btn btn-primary">Save</button></a>
