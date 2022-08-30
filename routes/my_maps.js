@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
   userId = req.session.user_id;
   getMyMaps(userId)
   .then(myMapsData => {
+    console.log("myMapsData is: ", myMapsData)
     const templateVars = {
       myMapsData
     }

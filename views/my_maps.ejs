@@ -26,13 +26,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,600;1,300&display=swap" rel="stylesheet">
 
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
   <%- include('partials/_header') %>
-  <h1>My Maps</h1>
+  <h2>My Maps</h2>
   <div class="my_maps_container">
-    
+    <% for (let map in myMapsData) { %>
+      <div class="my-map-box">
+        <div class="map" style="height: 200px; width: 300px; margin: 5px; border: 0.25px solid lightgray; border-radius: 8px">
+        </div>
+      </div>
+
+      <% let map = L.map('map').setView([map.latitude, map.longitude], 12); %>
+      <% L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { %>
+        <% maxZoom: 19, %>
+        <% attribution: '© OpenStreetMap' %>
+      <% }).addTo(map); %>
+
+      <div class="my-map-title">
+        <p><%= map.title %></p>
+      </div>
+      <div class="my-map-location">
+        <i class="fa-solid fa-map-pin"></i>
+        <span><%= map.city>, <%= map.country></span>
+      </div>
+
+    <% } %>
+
   </div>
 
 </body>
