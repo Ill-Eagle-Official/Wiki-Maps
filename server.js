@@ -5,11 +5,22 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require("cookie-session");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.set('view engine', 'ejs');
+
+// translate the input data / request body
+app.use(express.urlencoded({ extended: true }));
+
+// for cookie encryption
+app.use(cookieSession({
+  name: 'session',
+  keys: ["ndjkahjfi839jkwir7406fkjd"]
+}));
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -32,6 +43,7 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const mapsRoutes = require('./routes/maps');
+const myMapsRoutes = require('./routes/myMaps');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -41,6 +53,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 // Note: mount other resources here, using the same pattern above
 app.use('/api/maps', mapsRoutes);
+app.use('/myMaps', myMapsRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
@@ -48,6 +61,11 @@ app.use('/api/maps', mapsRoutes);
 app.get('/', (req, res) => {
   res.render('index');
 });
+
+app.get('/login/:id', (req, res) => {
+  req.session.user_id = req.params.id;
+  res.redirect('/');
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
