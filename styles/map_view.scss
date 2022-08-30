@@ -31,37 +31,6 @@ nav {
   align-items: center;
 }
 
-.nav-brand {
-  font-family: "Lobster";
-  font-size: 30px;
-  color: black;
-  text-decoration: none;
-}
-
-.nav-link-logged-in {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-family: "Source Sans Pro", sans-serif;
-  width: 500px;
-  color: black;
-}
-
-.nav-login-register {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-family: "Source Sans Pro", sans-serif;
-  width: 150px;
-}
-
-.nav-item {
-  color: black;
-  text-decoration: none;
-}
-
-
-
 #map {
   display: flex;
   flex-direction: column;
