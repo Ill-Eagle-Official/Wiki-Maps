@@ -48,11 +48,13 @@
       <% }).addTo(map); %>
 
       <div class="my-map-title">
-        <p><%= map.title %></p>
+        <span><%= map.title %></span>
+        <button class="edit-button">Edit</button>
       </div>
       <div class="my-map-location">
         <i class="fa-solid fa-map-pin"></i>
         <span><%= map.city>, <%= map.country></span>
+        <button class="delete-button">Delete</button>
       </div>
 
     <% } %>
