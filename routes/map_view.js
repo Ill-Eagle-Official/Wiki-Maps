@@ -17,19 +17,16 @@ module.exports = (db) => {
       return;
     }
 
-    const reqMapID = mapID;
-    getMapByID(db, reqMapID)
+    getMapByID(db, mapID)
       .then(reqMap => {
-        templateVars.map = reqMap;
+        templateVars.reqMap = reqMap;
         templateVars.title = reqMap.title;
-        res.render("map_page", templateVars);
+        res.json("map_view", templateVars);
       })
       .catch(err => {
         res.status(500).send("Error getting map from database");
       });
   });
 
+  // return router;
 };
-
-
-module.exports = router;

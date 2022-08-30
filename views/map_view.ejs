@@ -34,19 +34,7 @@
     <h1>Map</h1>
     <div id="map-container">
       <div id = "map">
-        <!-- This will be an actual map rendered from the DB -->
-        <script>
-
-          var map = L.map('map').setView([49.246, -123.116], 11);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-          }).addTo(map);
-
-          var marker = L.marker([49.246, -123.116]).addTo(map);
-          marker.bindPopup("Leaflet is cool").openPopup();
-        </script>
+        <!-- This is where the map goes -->
       </div>
     </div>
       <div id ="submitBtn">
@@ -63,6 +51,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
 
     <script src="/vendor/jquery-3.0.0.js"></script>
+
+    <!-- REQUIRED JS -->
+
+    <%- const mapLat = reqMap.latitude %>
+    <%- const mapLng = reqMap.longitude %>
+
+    <script src="/scripts/map_view.js"></script>
 
     <!-- FONTS -->
 

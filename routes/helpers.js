@@ -18,8 +18,7 @@ const getMapByID = (db, mapID) => {
   FROM maps
   WHERE id = $1
   `, [mapID])
-  .then(res => res.rows[0])
-  .catch(err => console.log(err));
+  .then(res => res.rows[0]);
 };
 
 // Function to get all pins for a specific map using the map ID
