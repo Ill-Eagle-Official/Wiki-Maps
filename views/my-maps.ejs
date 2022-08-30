@@ -37,25 +37,33 @@
   <div class="my_maps_container">
     <% for (let map in myMapsData) { %>
       <div class="my-map-box">
-        <div class="map" style="height: 200px; width: 300px; margin: 5px; border: 0.25px solid lightgray; border-radius: 8px">
-        </div>
+        <a id="map-box-text" style="text-decoration: none" href="http://localhost:8080/<%= map.id %>">
+        <!-- where the map being inserted -->
+          <div class="map" style="height: 200px; width: 300px; margin: 5px; border: 0.25px solid lightgray; border-radius: 8px">
+          </div>
+  
+          <div class="my-map-title">
+            <span><%= map.title %></span>
+            <button class="edit-button">Edit</button>
+          </div>
+  
+          <div class="my-map-location">
+            <div class="my-map-location-left">
+              <i class="fa-solid fa-map-pin"></i>
+              <span><%= map.city %>, <%= map.country %></span>
+            </div>
+            <button class="delete-button">Delete</button>
+          </div>
+        </a>
+
       </div>
 
+      <!-- js from leaflet to create a map -->
       <% let map = L.map('map').setView([map.latitude, map.longitude], 12); %>
       <% L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { %>
         <% maxZoom: 19, %>
         <% attribution: '© OpenStreetMap' %>
       <% }).addTo(map); %>
-
-      <div class="my-map-title">
-        <span><%= map.title %></span>
-        <button class="edit-button">Edit</button>
-      </div>
-      <div class="my-map-location">
-        <i class="fa-solid fa-map-pin"></i>
-        <span><%= map.city>, <%= map.country></span>
-        <button class="delete-button">Delete</button>
-      </div>
 
     <% } %>
 
