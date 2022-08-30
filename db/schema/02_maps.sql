@@ -10,5 +10,6 @@ CREATE TABLE maps (
   city VARCHAR(255) NOT NULL,
   latitude FLOAT NOT NULL,
   longitude FLOAT NOT NULL,
+  zoom FLOAT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
