@@ -31,7 +31,11 @@ router.get('/api', (req, res) => {
 router.post('/delete/:id', (req, res) => {
   mapId = req.params.id;
   console.log("mapId is: ", mapId);
-  deleteMapById(mapId);
+  deleteMapById(mapId)
+  .then(() => {
+    console.log("successfully deleted!")
+    res.send(200);
+  });
 })
 
 module.exports = router;

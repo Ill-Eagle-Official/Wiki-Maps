@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   const renderMaps = function(db) {
     for (let mapData of db) {
       console.log("mapData is: ", mapData);
@@ -30,28 +31,28 @@ $(document).ready(function() {
         attribution: '© OpenStreetMap'
       }).addTo(map);
 
+
+
     }
   };
 
+  // render all the maps created by the user on the page once the page is loaded
   const loadMaps = function() {
     $.ajax('/my-maps/api', { method: 'GET' })
       .then((res) => {
         renderMaps(res);
       });
-
   }
 
   loadMaps();
 
+  // delete button handeler to delete the map
   $(document).on('click', ".delete-my-map", function() {
-    console.log("heard the click!");
     const del_id = $(this).attr("value");
-    console.log("del_id is: ", del_id);
     const url = "/my-maps/delete/" + del_id;
-    console.log("url is: ", url);
     if(confirm("Are you sure you want to delete this map?")) {
       $.ajax(url, { method: 'POST' })
-      $(".my-map-box" + del_id).remove();
+      $(".my-map-box-" + del_id).remove();
     }
   })
 
