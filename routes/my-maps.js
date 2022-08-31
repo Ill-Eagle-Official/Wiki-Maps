@@ -5,19 +5,21 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+
 const express = require('express');
 const cookieSession = require("cookie-session");
 const router  = express.Router();
 const { getMyMaps } = require('../db/queries/my-maps')
 
 router.get('/', (req, res) => {
+  res.render("my-maps")
+})
+
+router.get('/api', (req, res) => {
   userId = req.session.user_id;
   getMyMaps(userId)
   .then(myMapsData => {
-    const templateVars = {
-      myMapsData
-    }
-    res.render('my-maps', templateVars);
+    res.json(myMapsData);
     }
   )
 });
