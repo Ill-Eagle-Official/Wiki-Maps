@@ -25,14 +25,38 @@ $(document).ready(function() {
         attribution: '© OpenStreetMap'
       }).addTo(map);
 
+    }
 
+  const renderPins = function(db) {
+
+    console.log("renderPins");
+    for (let pinData of db) {
+      console.log('this is pinData', pinData);
+      console.log('this is db', db);
+      marker = L.marker([pinData.latitude, pinData.longitude]).addTo(map);
+
+    }
 
   }
+
+  const pinRender = function(db) {
+    for (let pinData of db) {
+      if(pinData.map_id === mapData.id) {
+        console.log('this is pinData', pinData);
+        console.log(mapData.id);
+        marker = L.marker([pinData.latitude, pinData.longitude]).addTo(map);
+      }
+
+    }
+  }
+
+
 
   const renderMaps = function(db) {
     for (let mapData of db) {
 
       renderSingleMap(mapData, 'map-box-text');
+      pinRender(db);
 
       $(`#${mapData.id}`).click(function() {
 
@@ -53,6 +77,13 @@ $(document).ready(function() {
     .then(renderMaps);
   };
 
+  const loadPins = function() {
+    console.log('loadPins');
+     $.ajax('/api/pins', { method: 'GET'})
+     .then(renderPins);
+  }
+
   loadMaps();
+  loadPins();
 
 });

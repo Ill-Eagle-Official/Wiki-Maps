@@ -7,7 +7,9 @@
 
 const express = require('express');
 const router  = express.Router();
-const { getPins } = require('../queries/pin_queries');
+const { getPins } = require('./helpers')
+
+module.exports = function(db) {
 
 router.get('/', (req, res) => {
   getPins()
@@ -15,3 +17,6 @@ router.get('/', (req, res) => {
     res.json(pinsData);
   })
 });
+
+return router;
+};

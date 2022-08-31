@@ -62,7 +62,7 @@ header {
   pointer-events: none;
 }
 
-.favourite-icon {
+.favourite-icon i {
   display: flex;
   justify-content: flex-end;
   color: red;
@@ -71,7 +71,7 @@ header {
   transition: all .2s ease-in-out;
 }
 
-.favourite-icon:hover {
+.favourite-icon i:hover {
   color: blueviolet;
 }
 

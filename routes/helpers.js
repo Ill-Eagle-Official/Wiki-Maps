@@ -21,6 +21,16 @@ const getMapByID = (db, mapID) => {
   .then(res => res.rows[0]);
 };
 
+// Function to get all pins
+
+const getPins = () => {
+  return db.query(`
+    SELECT *
+    FROM pins;
+    `)
+    .then(res => res.rows);
+}
+
 // Function to get all pins for a specific map using the map ID
 const getPinsByMapID = (db, mapID) => {
   return db.query(`
@@ -32,4 +42,4 @@ const getPinsByMapID = (db, mapID) => {
     .then(res => res.rows);
 }
 
-module.exports = { getMap, getMapByID, getPinsByMapID };
+module.exports = { getMap, getMapByID, getPinsByMapID, getPins };
