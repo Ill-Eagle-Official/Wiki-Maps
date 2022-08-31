@@ -11,3 +11,16 @@
   padding-bottom: 30px;
 }
 
+.my-map-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.my-map-location {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

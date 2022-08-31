@@ -13,7 +13,7 @@ $(document).ready(function() {
             <button class="edit-button">Edit</button>
           </div>
 
-          <div id="my-map-location">
+          <div class="my-map-location">
             <div class="my-map-location-left">
               <i class="fa-solid fa-map-pin"></i>
               <span>${mapData.city}, ${mapData.country}</span>
