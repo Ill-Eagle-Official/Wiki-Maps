@@ -11,6 +11,8 @@ $(document).ready(function() {
           <div id="map-box-text">
             <div id="map-box-text-title">${mapData.title}</div>
             <div id="map-box-text-location"><i class="fa-solid fa-map-pin" style="color: red;"></i> ${mapData.city}, ${mapData.country}</div>
+            <div class="favourite-icon"><i class="fa-solid fa-heart"></i></div>
+
           </div>
           </div>
         </div>
@@ -23,6 +25,8 @@ $(document).ready(function() {
         attribution: '© OpenStreetMap'
       }).addTo(map);
 
+
+
   }
 
   const renderMaps = function(db) {
@@ -34,8 +38,7 @@ $(document).ready(function() {
 
           $('#map-grid').empty();
           renderSingleMap(mapData, 'map-single')
-          // $('.map-box').addClass('disabled');
-
+          $('#map-grid').css('display', 'flex');
 
         })
         // console.log(mapData.id);
