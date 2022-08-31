@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" />
     <!-- <link rel="stylesheet" href="/styles/main.css" /> -->
     <link rel="stylesheet" href="/styles/layout.css" />
-    <link rel="stylesheet" href="/styles/map_view.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/nav.css" />
 
      <!-- Leaflet CSS -->
@@ -24,8 +24,6 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
-    <script src="/scripts/map_view.js"></script>
-
   </head>
 
   <body>
@@ -35,16 +33,7 @@
 
     <h1>Create New Map!</h1>
     <div id="map-container">
-      <script>
 
-        var map = L.map('map').setView([49.2827, -123.1207], 13);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '© OpenStreetMap'
-        }).addTo(map);
-
-      </script>
     </div>
       <div id ="submitBtn">
         <textarea id="text" name="text" placeholder="Enter your title here..."></textarea>
@@ -63,6 +52,7 @@
 
     <!-- REQUIRED JS -->
 
+    <script src="scripts/map_new.js"></script>
 
 
     <!-- FONTS -->
