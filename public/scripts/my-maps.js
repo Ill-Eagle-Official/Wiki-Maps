@@ -3,12 +3,12 @@ $(document).ready(function() {
     for (let mapData of db) {
       console.log("mapData is: ", mapData);
       $('#my-map-grid').append(`
-        <div class="my-map-box">
+        <div class="my-map-box-${mapData.id}" style="background-color: white; border-radius: 8px; margin: 10px; padding: 5px; padding-bottom: 30px;">
           <div id="map-${mapData.id}" style="height: 300px; width: 400px; margin: 3px; border: 0.25px solid lightgray; border-radius: 10px;"></div>
 
           <div class="my-map-title">
             <span>${mapData.title}</span>
-            <button class="edit-my-map">Edit</button>
+            <button class="edit-my-map" value="${mapData.id}">Edit</button>
           </div>
 
           <div class="my-map-location">
@@ -16,7 +16,7 @@ $(document).ready(function() {
               <i class="fa-solid fa-map-pin"></i>
               <span>${mapData.city}, ${mapData.country}</span>
             </div>
-            <button class="delete-my-map">Delete</button>
+            <button class="delete-my-map" value="${mapData.id}">Delete</button>
           </div>
         </div>
 
@@ -36,7 +36,6 @@ $(document).ready(function() {
   const loadMaps = function() {
     $.ajax('/my-maps/api', { method: 'GET' })
       .then((res) => {
-        console.log("res is: ", res);
         renderMaps(res);
       });
 
@@ -44,8 +43,16 @@ $(document).ready(function() {
 
   loadMaps();
 
-  $('.delete-my-map').on('click', () => {
-    
+  $(document).on('click', ".delete-my-map", function() {
+    console.log("heard the click!");
+    const del_id = $(this).attr("value");
+    console.log("del_id is: ", del_id);
+    const url = "/my-maps/delete/" + del_id;
+    console.log("url is: ", url);
+    if(confirm("Are you sure you want to delete this map?")) {
+      $.ajax(url, { method: 'POST' })
+      $(".my-map-box" + del_id).remove();
+    }
   })
 
 

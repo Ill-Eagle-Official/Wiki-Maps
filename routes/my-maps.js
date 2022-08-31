@@ -9,8 +9,11 @@
 const express = require('express');
 const cookieSession = require("cookie-session");
 const router  = express.Router();
-const { getMyMaps } = require('../db/queries/my-maps');
+const { getMyMaps, deleteMapById } = require('../db/queries/my-maps');
 const { route } = require('express/lib/application');
+
+// translate the input data / request body
+router.use(express.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
   res.render("my-maps")
@@ -25,6 +28,10 @@ router.get('/api', (req, res) => {
   )
 });
 
-
+router.post('/delete/:id', (req, res) => {
+  mapId = req.params.id;
+  console.log("mapId is: ", mapId);
+  deleteMapById(mapId);
+})
 
 module.exports = router;
