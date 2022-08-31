@@ -1,7 +1,10 @@
+
+
 // Client facing scripts here
 $(document).ready(function() {
 
   const renderSingleMap = function(mapData, className) {
+
     $('#map-grid').append(`
         <div id="${mapData.id}" class="map-box">
           <div id="map-${mapData.id}" class="map-content ${className}"></div>
@@ -31,6 +34,7 @@ $(document).ready(function() {
 
           $('#map-grid').empty();
           renderSingleMap(mapData, 'map-single')
+          // $('.map-box').addClass('disabled');
 
 
         })
