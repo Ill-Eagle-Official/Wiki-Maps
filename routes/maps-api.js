@@ -8,14 +8,17 @@
 const express = require('express');
 const router  = express.Router();
 const { getMaps } = require('../db/queries/maps');
-const { getMapByID } = require('./helpers');
+const { getMapByID, getPins } = require('./helpers');
 
 module.exports = function(db) {
 
 router.get('/', (req, res) => {
   getMaps()
   .then(mapsData => {
-    res.json(mapsData);
+    getPins()
+    .then(pinsData => {
+      res.json([mapsData, pinsData])
+    })
   })
 });
 
