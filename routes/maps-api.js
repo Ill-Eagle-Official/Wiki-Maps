@@ -10,6 +10,8 @@ const router  = express.Router();
 const { getMaps } = require('../db/queries/maps');
 const { getMapByID } = require('./helpers');
 
+module.exports = function(db) {
+
 router.get('/', (req, res) => {
   getMaps()
   .then(mapsData => {
@@ -35,4 +37,6 @@ router.get("/:id", (req, res) => {
     });
 });
 
-module.exports = router;
+return router;
+
+}

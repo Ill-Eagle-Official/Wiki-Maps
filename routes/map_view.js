@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const { getMapByID } = require('./helpers');
-const db = require('../db/connection');
+// const db = require('../db/connection');
 
 router.get("/:id", (req, res) => {
   const mapID = req.params.id;

@@ -1,15 +1,15 @@
 // Client facing scripts here
 $(document).ready(function() {
 
-  const renderMaps = function(db) {
-    for (let mapData of db) {
-      $('#map-grid').append(`
-        <div id="map-box">
-          <div id="map-${mapData.id}" style="height: 300px; width: 400px; margin: 3px; border: 0.25px solid lightgray; border-radius: 10px;"></div>
-          <a id="map-box-text" style="text-decoration: none" href="http://localhost:8080/${mapData.id}">
+  const renderSingleMap = function(mapData, className) {
+    $('#map-grid').append(`
+        <div id="${mapData.id}" class="map-box">
+          <div id="map-${mapData.id}" class="map-content ${className}"></div>
+          <div id="map-box-text">
             <div id="map-box-text-title">${mapData.title}</div>
             <div id="map-box-text-location"><i class="fa-solid fa-map-pin" style="color: red;"></i> ${mapData.city}, ${mapData.country}</div>
-          </a>
+          </div>
+          </div>
         </div>
       `);
 
@@ -19,8 +19,27 @@ $(document).ready(function() {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
       }).addTo(map);
+
+  }
+
+  const renderMaps = function(db) {
+    for (let mapData of db) {
+
+      renderSingleMap(mapData, 'map-box-text');
+
+      $(`#${mapData.id}`).click(function() {
+
+          $('#map-grid').empty();
+          renderSingleMap(mapData, 'map-single')
+
+
+        })
+        // console.log(mapData.id);
+      };
+
     }
-  };
+
+
 
   const loadMaps = function() {
     $.ajax('/api/maps', { method: 'GET' })
@@ -28,10 +47,5 @@ $(document).ready(function() {
   };
 
   loadMaps();
-
-
-  $("#map-box").click(function() {
-    console.log("heard the click!");
-  });
 
 });
