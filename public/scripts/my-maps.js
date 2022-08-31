@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
   const renderMaps = function(db) {
     for (let mapData of db) {
@@ -10,7 +8,7 @@ $(document).ready(function() {
 
           <div class="my-map-title">
             <span>${mapData.title}</span>
-            <button class="edit-button">Edit</button>
+            <button class="edit-my-map">Edit</button>
           </div>
 
           <div class="my-map-location">
@@ -18,7 +16,7 @@ $(document).ready(function() {
               <i class="fa-solid fa-map-pin"></i>
               <span>${mapData.city}, ${mapData.country}</span>
             </div>
-            <button class="delete-button">Delete</button>
+            <button class="delete-my-map">Delete</button>
           </div>
         </div>
 
@@ -45,5 +43,11 @@ $(document).ready(function() {
   }
 
   loadMaps();
+
+  $('.delete-my-map').on('click', () => {
+    
+  })
+
+
 
 })

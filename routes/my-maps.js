@@ -9,7 +9,8 @@
 const express = require('express');
 const cookieSession = require("cookie-session");
 const router  = express.Router();
-const { getMyMaps } = require('../db/queries/my-maps')
+const { getMyMaps } = require('../db/queries/my-maps');
+const { route } = require('express/lib/application');
 
 router.get('/', (req, res) => {
   res.render("my-maps")
@@ -23,5 +24,7 @@ router.get('/api', (req, res) => {
     }
   )
 });
+
+
 
 module.exports = router;
