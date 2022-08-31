@@ -62,7 +62,22 @@ header {
   pointer-events: none;
 }
 
+.favourite-icon i {
+  display: flex;
+  justify-content: flex-end;
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.favourite-icon i:hover {
+  color: blueviolet;
+}
+
 .map-box-text {
+  display: flex;
+  flex-direction: column;
   color: hsl(240, 0%, 10%);
   padding: 10px;
 }

@@ -33,21 +33,18 @@
 
     <main class="container">
 
-    <h1>Map</h1>
+    <h1>Create New Map!</h1>
     <div id="map-container">
-      <!-- <div id = "map-${reqMap.title}">
+      <script>
 
+        var map = L.map('map').setView([49.2827, -123.1207], 13);
 
-        <script>
-          let map = L.map('map-' + reqMap.title).setView([reqMap.latitude, reqMap.longitude], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '© OpenStreetMap'
+        }).addTo(map);
 
-          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          }).addTo(map);
-
-        </script>
-
-      </div> -->
+      </script>
     </div>
       <div id ="submitBtn">
         <textarea id="text" name="text" placeholder="Enter your title here..."></textarea>
