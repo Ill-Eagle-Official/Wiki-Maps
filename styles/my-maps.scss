@@ -1,0 +1,13 @@
+#my-map-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.my-map-box {
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 5px;
+  padding-bottom: 30px;
+}
+
