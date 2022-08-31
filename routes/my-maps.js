@@ -16,6 +16,7 @@ const { route } = require('express/lib/application');
 router.use(express.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
+
   res.render("my-maps")
 })
 
@@ -30,10 +31,8 @@ router.get('/api', (req, res) => {
 
 router.post('/delete/:id', (req, res) => {
   mapId = req.params.id;
-  console.log("mapId is: ", mapId);
   deleteMapById(mapId)
   .then(() => {
-    console.log("successfully deleted!")
     res.send(200);
   });
 })
