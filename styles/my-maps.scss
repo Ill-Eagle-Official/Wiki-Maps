@@ -1,6 +1,6 @@
 #my-map-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #my-map-box {
@@ -20,7 +20,6 @@
   flex-direction: column;
   color: hsl(240, 0%, 10%);
   padding: 10px;
-  cursor: pointer;
 }
 
 .my-map-title-edit {
@@ -33,12 +32,14 @@
 
 .my-map-title {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .my-map-location {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .my-map-content-small-map {

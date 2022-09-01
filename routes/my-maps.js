@@ -26,7 +26,8 @@ router.get('/api', (req, res) => {
     getPins()
     .then(pinsData =>
       res.json([myMapsData, pinsData]))
-  })
+    }
+  )
 });
 
 router.post('/delete/:id', (req, res) => {
@@ -34,6 +35,7 @@ router.post('/delete/:id', (req, res) => {
   deleteMapById(mapId)
   .then(() => {
     res.send(200);
+    // res.redirect('/')
   });
 })
 
