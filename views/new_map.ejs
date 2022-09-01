@@ -31,6 +31,7 @@
     <main class="container">
 
     <h1 class="create-header">Create New Map!</h1>
+    <h4 class=""instructions">Instructions: Please center the map on the area you would like to place your pins. Then enter your map's title, the country it is in, and the city, then click 'Submit' to add your pins!</h4>
     <div id="map-container">
       <div class="map-box">
     <div id="mapid">
@@ -38,30 +39,26 @@
       <script>
         // Blank map centred on Vancouver
         let map = L.map('mapid').setView([49.2827, -123.1207], 11);
+        let mapLat;
+        let mapLng;
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
           attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // Add a marker to the map on click
+        map.on('moveend'
+          , function() {
+            let center = map.getCenter();
+            let lat = center.lat;
+            let lng = center.lng;
 
-        let marker = L.marker();
+            mapLat = lat;
+            mapLng = lng;
 
-        map.on('click', function(e) {
-          marker
-            .setLatLng(e.latlng)
-            .addTo(map)
-          .bindPopup(`<form action="/api/pins" method="POST">
-            <input type="hidden" name="lat" value="${e.latlng.lat}">
-            <input type="hidden" name="lng" value="${e.latlng.lng}">
-            <input type="text" name="title" placeholder="Enter a title">
-            <input type="text" name="description" placeholder="Enter a description">
-            <input type="text" name="image_url" placeholder="Enter your image URL">
-            <input type="submit" value="Add Pin">`)
-
-          .openPopup();
-        });
+            console.log(mapLat, mapLng);
+          }
+        );
 
       </script>
 
@@ -72,6 +69,7 @@
     <div class="submission-form">
 
       <form action="/maps" method="POST">
+
         <label for="title">Title</label>
         <input type="text" name="title" id="title" placeholder="Enter a fitting title!" required>
         <label for="latitude">Country</label>
