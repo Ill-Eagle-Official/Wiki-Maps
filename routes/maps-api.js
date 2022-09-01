@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const { getMaps } = require('../db/queries/maps');
+const { addFavMap } = require('../db/queries/fav-button')
 const { getMapByID, getPins } = require('./helpers');
 
 module.exports = function(db) {
@@ -37,6 +38,22 @@ router.get("/:id", (req, res) => {
     })
     .catch(err => {
       res.status(500).send("Error getting map from database");
+    });
+});
+
+
+router.post('/', (req, res) => {
+
+  console.log("hello am in maps-api?")
+  const userId = '1';
+  const mapId = req.body.map_id;
+  db.addFavMap({...req.body, user_id: userId, map_id: mapId})
+    .then(favMap => {
+      res.send(favMap);
+    })
+    .catch(e => {
+      console.error(e);
+      res.send(e)
     });
 });
 
