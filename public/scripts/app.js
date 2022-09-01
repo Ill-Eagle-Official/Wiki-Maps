@@ -5,8 +5,6 @@ $(document).ready(function () {
 
   const renderSingleMap = function (mapData, className) {
 
-    console.log(mapData.id)
-
     $('#map-grid').append(`
         <div class="map-box">
           <div id="map-${mapData.id}" class="map-content ${className}"></div>
@@ -14,7 +12,7 @@ $(document).ready(function () {
             <div id="map-box-text-title">${mapData.title}</div>
             <div id="map-box-text-location"><i class="fa-solid fa-map-pin" style="color: red;"></i> ${mapData.city}, ${mapData.country}</div>
           </div>
-           <div class="favourite-icon"><i class="fa-solid fa-heart"></i></div>
+           <div class="favourite-icon"><i class="fa-solid fa-heart" data-id="${mapData.id}" id="heart-icon${mapData.id}"></i></div>
           </div>
       `);
 
@@ -24,6 +22,13 @@ $(document).ready(function () {
       maxZoom: 19,
       attribution: '© OpenStreetMap'
     }).addTo(map);
+
+    $(`#heart-icon${mapData.id}`).click(function () {
+      console.log(mapData.id)
+      $.ajax(`/api/maps/favourites/${mapData.id}`, { method: 'POST' })
+      .then(console.log('.then in ajax post'))
+    })
+
   }
 
   const renderPins = function (db, mapData) {
@@ -59,12 +64,10 @@ $(document).ready(function () {
         $('#map-grid').css('display', 'flex');
       })
     };
-    $(`.fa-heart`).click(function () {
-      console.log("Clicked on the heart icon")
-      $.ajax('/', { method: 'POST' })
-      .then(console.log('.then in ajax post'))
-    })
   }
+
+
+
 
   const loadMaps = function () {
     $.ajax('/api/maps', { method: 'GET' })

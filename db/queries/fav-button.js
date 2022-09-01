@@ -8,6 +8,8 @@ const addFavMap = function(map) {
 
   const values = [map.user_id, map.map_id];
 
+  console.log(values);
+
   return db
   .query(queryString, values)
   .then((res) => {
@@ -18,4 +20,4 @@ const addFavMap = function(map) {
     return err;
   });
 }
-exports.addFavMap = addFavMap;
+module.exports = { addFavMap };
