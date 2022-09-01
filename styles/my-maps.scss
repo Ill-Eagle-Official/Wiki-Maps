@@ -3,15 +3,27 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-.my-map-box {
-  background-color: white;
-  border-radius: 8px;
-  margin: 10px;
+#my-map-box {
+  background-color: hsl(0, 0%, 99%);
+  border-radius: 10px;
+  margin: 20px;
   padding: 5px;
-  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  max-height: 96%;
+  box-shadow: 0px 0px 12px 2px hsl(240, 0%, 85%);
+  transition: all .2s ease-in-out;
 }
 
-.my-map-title {
+.my-map-box-text {
+  display: flex;
+  flex-direction: column;
+  color: hsl(240, 0%, 10%);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.my-map-title-edit {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -19,8 +31,36 @@
   padding-top: 5px;
 }
 
+.my-map-title {
+  font-weight: bold;
+}
+
 .my-map-location {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.my-map-content-small-map {
+  height: 300px;
+  width: 400px;
+  margin: 3px;
+  border: 0.25px solid lightgray;
+  border-radius: 10px;
+}
+
+.my-map-content-map-single {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75vw;
+  height: 60vh;
+}
+
+.fa-map-pin {
+  color: red;
+}
+
+button > * {
+  pointer-events: none;
 }
