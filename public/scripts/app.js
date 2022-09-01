@@ -43,17 +43,13 @@ $(document).ready(function () {
         <b>${pin.title}</b><br>
         ${pin.description}`
         ).closePopup();
-
       }
     }
   };
 
-
   const renderMaps = function (db) {
 
-
     for (let mapData of db[0]) {
-
 
       renderSingleMap(mapData, 'map-box-text');
       renderPins(db[1], mapData)
@@ -65,12 +61,12 @@ $(document).ready(function () {
         renderPins(db[1], mapData)
         $('#map-grid').css('display', 'flex');
       })
-
     };
     $(`.fa-heart`).click(function () {
       console.log("Clicked on the heart icon")
+      $.ajax('/', { method: 'POST' })
+      .then(console.log('.then in ajax post'))
     })
-
   }
 
   const loadMaps = function () {
