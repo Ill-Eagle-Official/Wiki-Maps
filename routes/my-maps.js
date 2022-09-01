@@ -9,14 +9,13 @@
 const express = require('express');
 const cookieSession = require("cookie-session");
 const router  = express.Router();
-const { getMyMaps, deleteMapById } = require('../db/queries/my-maps');
+const { getMyMaps, deleteMapById, getPins} = require('../db/queries/my-maps');
 const { route } = require('express/lib/application');
 
 // translate the input data / request body
 router.use(express.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
-
   res.render("my-maps")
 })
 
@@ -24,10 +23,10 @@ router.get('/api', (req, res) => {
   userId = req.session.user_id;
   getMyMaps(userId)
   .then(myMapsData => {
-    
-    res.json(myMapsData);
-    }
-  )
+    getPins()
+    .then(pinsData =>
+      res.json([myMapsData, pinsData]))
+  })
 });
 
 router.post('/delete/:id', (req, res) => {
