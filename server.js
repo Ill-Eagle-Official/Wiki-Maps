@@ -46,6 +46,7 @@ const mapsRoutes = require('./routes/maps-api');
 const db = require('./db/connection');
 
 const myMapsRoutes = require('./routes/my-maps');
+const { Template } = require('ejs');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -64,11 +65,14 @@ app.use('/my-maps', myMapsRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  const templateVars = { // creates dynamic header with/without login
+    userId: req.session.user_id
+  };
+  res.render('index', templateVars);
 });
 
 app.get('/login/:id', (req, res) => {
-  req.session.user_id = req.params.id;
+  req.session.user_id = req.params.id; // set up cookie session
   res.redirect('/');
 })
 

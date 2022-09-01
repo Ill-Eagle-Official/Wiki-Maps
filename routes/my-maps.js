@@ -16,11 +16,14 @@ const { route } = require('express/lib/application');
 router.use(express.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
-  res.render("my-maps")
+  const templateVars = {
+    userId: req.session.user_id
+  };
+  res.render("my-maps", templateVars)
 })
 
 router.get('/api', (req, res) => {
-  userId = req.session.user_id;
+  const userId = req.session.user_id;
   getMyMaps(userId)
   .then(myMapsData => {
     getPins()
@@ -35,7 +38,6 @@ router.post('/delete/:id', (req, res) => {
   deleteMapById(mapId)
   .then(() => {
     res.send(200);
-    // res.redirect('/')
   });
 })
 
