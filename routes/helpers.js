@@ -42,4 +42,15 @@ const getPinsByMapID = (db, mapID) => {
     .then(res => res.rows);
 }
 
-module.exports = { getMap, getMapByID, getPinsByMapID, getPins };
+// Function to insert new map into database
+
+const insertMap = (db, map) => {
+  return db.query(`
+  INSERT INTO maps (user_id, title, country, city, latitude, longitude, zoom)
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
+  RETURNING *;
+  `, [map.user_id, map.title, map.country, map.city, map.latitude, map.longitude, map.zoom])
+  .then(res => res.rows[0]);
+}
+
+module.exports = { getMap, getMapByID, getPinsByMapID, getPins, insertMap };

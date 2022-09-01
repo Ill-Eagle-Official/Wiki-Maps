@@ -50,13 +50,14 @@
         map.on('moveend'
           , function() {
             let center = map.getCenter();
+            let zoom = map.getZoom();
             let lat = center.lat;
             let lng = center.lng;
 
-            mapLat = lat;
-            mapLng = lng;
-
-            console.log(mapLat, mapLng);
+            console.log(mapLat, mapLng, zoom);
+            document.getElementById('zoom').value = zoom;
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lng;
           }
         );
 
@@ -71,6 +72,9 @@
       <form action="/api/maps" method="POST">
 
         <label for="title">Title</label>
+        <input type="hidden" name="zoom" id="zoom">
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
         <input type="text" name="title" id="title" placeholder="Enter a fitting title!" required>
         <label for="latitude">Country</label>
         <input type="text" name="country" id="country" placeholder="Enter your country..." required>
