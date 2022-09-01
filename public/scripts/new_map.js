@@ -1,18 +1,19 @@
 (() => {
 
-  let map;
+  // AJAX POST request when submit button is clicked
 
-  const addBlankMap = () => {
-
-    map = L.map('map').setView([43.6532, -79.3832], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap'
-    }).addTo(map);
-
-  }
-
-  addBlankMap();
+  $('.submission-form').on('submit', function(event) {
+    event.preventDefault();
+    let data = $(this).serialize();
+    console.log(data);
+    $.ajax({
+      url: '/api/maps',
+      method: 'POST',
+      data: data
+    }).done((response) => {
+      console.log(response);
+      window.location.href = `/maps/${response.map_id}`;
+    });
+  });
 
 });
