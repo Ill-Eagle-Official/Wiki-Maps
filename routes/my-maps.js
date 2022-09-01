@@ -24,6 +24,7 @@ router.get('/api', (req, res) => {
   userId = req.session.user_id;
   getMyMaps(userId)
   .then(myMapsData => {
+    
     res.json(myMapsData);
     }
   )

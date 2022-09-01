@@ -81,13 +81,13 @@ $(document).ready(function() {
     .then(renderMaps);
   };
 
-  const loadPins = function() {
-    console.log('loadPins');
-     $.ajax('/api/pins', { method: 'GET'})
-     .then(renderPins);
-  }
+  // const loadPins = function() {
+  //   console.log('loadPins');
+  //    $.ajax('/api/pins', { method: 'GET'})
+  //    .then(renderPins);
+  // }
 
   loadMaps();
-  loadPins();
+  // loadPins();
 
 });

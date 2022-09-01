@@ -58,4 +58,53 @@ $(document).ready(function() {
 
 
 
+  // // render single map
+  // let map;
+  // const renderSingleMap = function (mapData) {
+  //   $('#my-map-grid').append(`
+  //       <div class="my-map-box-${mapData.id}" style="background-color: white; border-radius: 8px; margin: 10px; padding: 5px; padding-bottom: 30px;">
+  //         <div id="map-${mapData.id}" style="height: 300px; width: 400px; margin: 3px; border: 0.25px solid lightgray; border-radius: 10px;"></div>
+
+  //         <div class="my-map-title">
+  //           <span>${mapData.title}</span>
+  //           <button class="edit-my-map" value="${mapData.id}">Edit</button>
+  //         </div>
+
+  //         <div class="my-map-location">
+  //           <div class="my-map-location-left">
+  //             <i class="fa-solid fa-map-pin"></i>
+  //             <span>${mapData.city}, ${mapData.country}</span>
+  //           </div>
+  //           <button class="delete-my-map" value="${mapData.id}">Delete</button>
+  //         </div>
+  //       </div>
+
+  //     `);
+
+  //     // js from leaflet to create a map
+  //     let map = L.map('map-' + mapData.id).setView([mapData.latitude, mapData.longitude], mapData.Zoom);
+
+  //     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //       maxZoom: 19,
+  //       attribution: '© OpenStreetMap'
+  //     }).addTo(map);
+  // }
+
+  // const renderPins = function(db, mapData) {
+  //   for (let pin of db) {
+  //     if (pin.map_id === mapData.id) {
+  //       let marker = L.marker([pin.latitude, pin.longitude])
+  //       .addTo(map)
+
+  //       marker.bindPopup(
+  //         `<img src=${pin.image_url} width="100" height="100"><br>
+  //         <b>${pin.title}</b><br>
+  //         ${pin.description}`
+  //       ).closePopup();
+  //     }
+  //   }
+  // };
+
+
+
 })
