@@ -44,7 +44,7 @@ const getPinsByMapID = (db, mapID) => {
 
 // Function to insert new map into database
 
-const insertMap = (db, map) => {
+const insertMap = (map) => {
   return db.query(`
   INSERT INTO maps (user_id, title, country, city, latitude, longitude, zoom)
   VALUES ($1, $2, $3, $4, $5, $6, $7)
