@@ -9,7 +9,7 @@
 const express = require('express');
 const cookieSession = require("cookie-session");
 const router  = express.Router();
-const { getMyMaps, deleteMapById, getPins} = require('../db/queries/my-maps');
+const { getFavourites, getPins} = require('../db/queries/favourites');
 const { route } = require('express/lib/application');
 
 // translate the input data / request body
@@ -23,17 +23,17 @@ router.get('/', (req, res) => {
   res.render("favourites", templateVars)
 })
 
-// // routes to load favourite maps and pins
-// router.get('/api', (req, res) => {
-//   const userId = req.session.user_id;
-//   getMyMaps(userId)
-//   .then(myMapsData => {
-//     getPins()
-//     .then(pinsData =>
-//       res.json([myMapsData, pinsData]))
-//     }
-//   )
-// });
+// routes to load favourite maps and pins
+router.get('/api', (req, res) => {
+  const userId = req.session.user_id;
+  getFavourites(userId)
+  .then(myMapsData => {
+    getPins()
+    .then(pinsData =>
+      res.json([myMapsData, pinsData]))
+    }
+  )
+});
 
 // router.post('/delete/:id', (req, res) => {
 //   mapId = req.params.id;
