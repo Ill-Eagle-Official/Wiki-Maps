@@ -10,9 +10,8 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
     <link rel="stylesheet" href="/vendor/border-box.css" />
-    <!-- <link rel="stylesheet" href="/styles/main.css" /> -->
     <link rel="stylesheet" href="/styles/layout.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/new_map.css" />
     <link rel="stylesheet" href="/styles/nav.css" />
 
      <!-- Leaflet CSS -->
@@ -31,13 +30,13 @@
 
     <main class="container">
 
-    <h1>Create New Map!</h1>
+    <h1 class="create-header">Create New Map!</h1>
     <div id="map-container">
-
+      <div class="map-box">
     <div id="mapid">
 
       <script>
-        let map = L.map('mapid').setView([51.505, -0.09], 13);
+        let map = L.map('mapid').setView([49.2827, -123.1207], 11);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
@@ -46,14 +45,14 @@
       </script>
 
     </div>
+    </div>
+    <br>
 
     <div class="submission-form">
 
       <form action="/maps" method="POST">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" placeholder="Title" required>
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description" placeholder="Description" required>
+        <input type="text" name="title" id="title" placeholder="Enter a fitting title!" required>
         <label for="latitude">Country</label>
         <input type="text" name="country" id="country" placeholder="Enter your country..." required>
         <label for="longitude">City</label>
