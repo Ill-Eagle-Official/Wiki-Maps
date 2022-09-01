@@ -1,5 +1,3 @@
-
-
 // Client facing scripts here
 $(document).ready(function () {
 
@@ -26,7 +24,6 @@ $(document).ready(function () {
       maxZoom: 19,
       attribution: '© OpenStreetMap'
     }).addTo(map);
-
   }
 
   const renderPins = function (db, mapData) {
