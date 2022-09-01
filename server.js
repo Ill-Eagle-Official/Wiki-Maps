@@ -5,11 +5,22 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require("cookie-session");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.set('view engine', 'ejs');
+
+// translate the input data / request body
+app.use(express.urlencoded({ extended: true }));
+
+// for cookie encryption
+app.use(cookieSession({
+  name: 'session',
+  keys: ["ndjkahjfi839jkwir7406fkjd"]
+}));
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -32,10 +43,9 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const mapsRoutes = require('./routes/maps-api');
-const pinsRoutes = require('./routes/pins-api');
-const newMapRoute = require('./routes/new_map');
 const db = require('./db/connection');
 
+const myMapsRoutes = require('./routes/my-maps');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -45,10 +55,10 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/maps', mapsRoutes(db));
 app.use('/api/maps/:id', mapsRoutes(db));
-app.use('/api/pins', pinsRoutes(db));
-app.use('/new', newMapRoute);
 
 // Note: mount other resources here, using the same pattern above
+app.use('/api/maps', mapsRoutes);
+app.use('/my-maps', myMapsRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
@@ -60,6 +70,12 @@ app.get('/', (req, res) => {
 app.get('/new', (req, res) => {
   res.render('new_map');
 });
+
+app.get('/login/:id', (req, res) => {
+  req.session.user_id = req.params.id;
+  res.redirect('/');
+})
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
