@@ -66,9 +66,6 @@ $(document).ready(function () {
     };
   }
 
-
-
-
   const loadMaps = function () {
     $.ajax('/api/maps', { method: 'GET' })
       .then(renderMaps);

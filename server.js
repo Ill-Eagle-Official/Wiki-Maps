@@ -72,7 +72,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/new', (req, res) => {
-  res.render('new_map');
+  const templateVars = {
+    userId: req.session.user_id
+  }
+  res.render('new_map', templateVars);
 });
 
 app.get('/login/:id', (req, res) => {
