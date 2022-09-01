@@ -34,11 +34,36 @@
     <h1>Create New Map!</h1>
     <div id="map-container">
 
+    <div id="mapid">
+
+      <script>
+        let map = L.map('mapid').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '© OpenStreetMap'
+        }).addTo(map);
+      </script>
+
     </div>
-      <div id ="submitBtn">
-        <textarea id="text" name="text" placeholder="Enter your title here..."></textarea>
-        <a href="/"><button type="button" class="btn btn-primary">Save</button></a>
-      </div>
+
+    <div class="submission-form">
+
+      <form action="/maps" method="POST">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" placeholder="Title" required>
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" placeholder="Description" required>
+        <label for="latitude">Country</label>
+        <input type="text" name="country" id="country" placeholder="Enter your country..." required>
+        <label for="longitude">City</label>
+        <input type="text" name="city" id="city" placeholder="Enter your city..." required>
+        <input type="submit" value="Submit">
+      </form>
+
+    </div>
+
+    </div>
     </main>
 
 
@@ -52,7 +77,7 @@
 
     <!-- REQUIRED JS -->
 
-    <script src="scripts/map_new.js"></script>
+    <script src="scripts/new_map.js"></script>
 
 
     <!-- FONTS -->

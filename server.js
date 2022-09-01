@@ -46,7 +46,7 @@ app.use('/users', usersRoutes);
 app.use('/api/maps', mapsRoutes(db));
 app.use('/api/maps/:id', mapsRoutes(db));
 app.use('/api/pins', pinsRoutes(db));
-app.use('/new', newMapRoute(db));
+app.use('/new', newMapRoute);
 
 // Note: mount other resources here, using the same pattern above
 // Home page
@@ -55,6 +55,10 @@ app.use('/new', newMapRoute(db));
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+app.get('/new', (req, res) => {
+  res.render('new_map');
 });
 
 app.listen(PORT, () => {

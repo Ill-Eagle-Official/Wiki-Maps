@@ -1,12 +1,18 @@
 (() => {
 
-  const map = L.map('map').setView([40.7128, -74.0060], 13);
+  let map;
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+  const addBlankMap = () => {
 
+    map = L.map('map').setView([43.6532, -79.3832], 13);
 
-})
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
 
+  }
 
+  addBlankMap();
+
+});
