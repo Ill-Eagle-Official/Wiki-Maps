@@ -11,6 +11,7 @@ const cookieSession = require("cookie-session");
 const router  = express.Router();
 const { getMyMaps, deleteMapById, getPins} = require('../db/queries/my-maps');
 const { route } = require('express/lib/application');
+const { getPinsByMapID } = require('./helpers');
 
 // translate the input data / request body
 router.use(express.urlencoded({ extended: true }));
@@ -40,5 +41,15 @@ router.post('/delete/:id', (req, res) => {
     res.send(200);
   });
 })
+
+router.get("/edit/:id", (req, res) => {
+  console.log(req.params.id)
+  const templateVars = {
+    mapId: req.params.id,
+    userId: req.session.user_id
+  };
+  console.log(templateVars);
+  res.render("edit_map", templateVars);
+});
 
 module.exports = router;

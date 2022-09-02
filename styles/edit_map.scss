@@ -1,0 +1,71 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background-color: hsl(0, 0%, 99%);
+
+  // background: rgb(163, 208, 219);
+  // background: linear-gradient(
+  //   227deg,
+  //   rgba(163, 208, 219, 1) 0%,
+  //   rgba(163, 176, 219, 1) 20%,
+  //   rgba(163, 173, 219, 1) 34%,
+  //   rgba(163, 219, 208, 1) 59%,
+  //   rgba(163, 208, 219, 1) 74%,
+  //   rgba(163, 208, 219, 1) 100%
+  // );
+}
+
+header {
+  width: 100%;
+}
+
+.create-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  #mapid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    height: 70vh;
+  }
+
+  .map-box {
+    background-color: hsl(0, 0%, 99%);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    max-height: 96%;
+    box-shadow: 0px 0px 12px 2px hsl(240, 0%, 85%);
+    transition: all .2s ease-in-out;
+  }
+
+}
+

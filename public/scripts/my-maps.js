@@ -94,6 +94,13 @@ $(document).ready(function() {
       })
     }
   })
+
+  // Edit button render and redirect
+  $(document).on('click', ".edit-my-map", function() {
+      console.log('Clicked edit button');
+      window.location.assign('/my-maps/edit/' + $(this).attr('value'));
+  })
+
   loadMaps();
 
 })

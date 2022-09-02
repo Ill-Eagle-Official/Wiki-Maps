@@ -32,7 +32,7 @@ const getPins = () => {
 }
 
 // Function to get all pins for a specific map using the map ID
-const getPinsByMapID = (db, mapID) => {
+const getPinsByMapID = (mapID) => {
   return db.query(`
     SELECT pins.title AS title, pins.description AS description, pins.image_url AS image_url, pins.id AS id, pins.latitude AS latitude, pins.longitude AS longitude, pins.map_id AS map_id, maps.user_id AS owner
     FROM pins

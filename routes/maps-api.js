@@ -9,7 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const { getMaps } = require('../db/queries/maps');
 const { addFavMap } = require('../db/queries/fav-button')
-const { getMapByID, getPins } = require('./helpers');
+const { getMapByID, getPins, getPinsByMapID } = require('./helpers');
 
 module.exports = function(db) {
 
@@ -33,8 +33,12 @@ router.get("/:id", (req, res) => {
 
   getMapByID(db, mapID)
     .then(reqMap => {
-      console.log(reqMap);
-      res.json(reqMap);
+      getPinsByMapID(mapID)
+      .then(reqPins => {
+        console.log("reqMap is: ", reqMap);
+        console.log("reqPins is: ", reqPins);
+        res.json([reqMap, reqPins]);
+      })
     })
     .catch(err => {
       res.status(500).send("Error getting map from database");
@@ -42,9 +46,19 @@ router.get("/:id", (req, res) => {
 });
 
 
+// router.get('/api', (req, res) => {
+//   const userId = req.session.user_id;
+//   getMyMaps(userId)
+//   .then(myMapsData => {
+//     getPins()
+//     .then(pinsData =>
+//       res.json([myMapsData, pinsData]))
+//     }
+//   )
+// });
+
 router.post('/favourites/:id', (req, res) => {
 
-  console.log("hello am in maps-api?")
   const userId = req.session.user_id;
   const mapId = req.params.id;
   console.log(userId);
