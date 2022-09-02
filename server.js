@@ -73,9 +73,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/new', (req, res) => {
+<<<<<<< HEAD
   const templateVars = { // creates dynamic header with/without login
     userId: req.session.user_id
   };
+=======
+  const templateVars = {
+    userId: req.session.user_id
+  }
+>>>>>>> 052a24275e4164340b15e94eb027a20a44bd7beb
   res.render('new_map', templateVars);
 });
 

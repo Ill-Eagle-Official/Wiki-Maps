@@ -27,9 +27,9 @@ router.get('/', (req, res) => {
 router.post('/favourites/:id', (req, res) => {
 
   console.log("hello am in maps-api?")
-  const userId = '1';
+  const userId = req.session.user_id;
   const mapId = req.params.id;
-  console.log(mapId);
+  console.log(userId);
   addFavMap({...req.body, user_id: userId, map_id: mapId})
     .then(favMap => {
       res.send(favMap);
