@@ -9,7 +9,7 @@
 const express = require('express');
 const cookieSession = require("cookie-session");
 const router  = express.Router();
-const { getFavourites, getPins} = require('../db/queries/favourites');
+const { getFavourites, getPins, deleteFavourite} = require('../db/queries/favourites');
 const { route } = require('express/lib/application');
 
 // translate the input data / request body
@@ -41,12 +41,13 @@ router.get('/api', (req, res) => {
   )
 });
 
-// router.post('/delete/:id', (req, res) => {
-//   mapId = req.params.id;
-//   deleteMapById(mapId)
-//   .then(() => {
-//     res.send(200);
-//   });
-// })
+// remove map from favourites
+router.post('/delete/:id', (req, res) => {
+  mapId = req.params.id;
+  deleteFavourite(mapId)
+  .then(() => {
+    res.send(200);
+  });
+})
 
 module.exports = router;

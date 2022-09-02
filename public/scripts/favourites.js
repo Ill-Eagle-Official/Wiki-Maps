@@ -20,7 +20,7 @@ $(document).ready(function() {
                  <span>${mapData.city}, ${mapData.country}</span>
                </div>
                <div>
-                 <button class="delete-my-map" value="${mapData.fav_id}">Remove</button>
+                 <button class="delete-my-fav-map" value="${mapData.fav_id}">Remove</button>
                </div>
              </div>
            </div>
@@ -77,14 +77,30 @@ $(document).ready(function() {
   const loadMaps = function() {
     $.ajax('/favourites/api', { method: 'GET' })
     .then((res) => {
-      console.log("route is fired!")
+      // console.log("route is fired!")
       $('#my-fav-map-grid').empty();
       renderMaps(res);
     });
 
   }
 
+
+  // Event handeler that removes the map from favourites
+  $(document).on('click', ".delete-my-fav-map", function() {
+    const del_id = $(this).attr("value");
+    const url = "/favourites/delete/" + del_id;
+    if(confirm("Are you sure you want to remove this map from favourites?")) {
+      $.ajax(url, { method: 'POST' })
+      .then(() => {
+        //after the route is fired and completed the job, load maps again
+        loadMaps();
+      })
+    }
+  })
+
   loadMaps();
+
+
 
 
 })

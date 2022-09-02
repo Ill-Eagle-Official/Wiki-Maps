@@ -22,12 +22,18 @@ const getPins = () => {
 }
 
 
-// // Function to remove favourate map
-// const deleteFavourite = (mapId, userId) => {
-//   return db.query
-// }
+// Function to remove favourate map
+const deleteFavourite = (favId) => {
+  return db.query(`
+  DELETE FROM favourites
+  WHERE favourites.id = $1`, [favId])
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
 
 module.exports = {
   getFavourites,
-  getPins
+  getPins,
+  deleteFavourite
 }
