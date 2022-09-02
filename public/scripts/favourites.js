@@ -5,25 +5,22 @@ $(document).ready(function() {
    const renderSingleMap = function (mapData, className) {
      $('#my-fav-map-grid').append(`
          <div id ="my-fav-map-box" class="my--fav-map-box-${mapData.fav_id}">
-           <div id="map-${mapData.fav_id}" class="my-map-content-${className}"></div>
+           <div id="map-${mapData.fav_id}" class="my-fav-map-content-${className}"></div>
 
-           <div class="my-map-box-text">
-             <div class="my-map-title-edit">
+           <div class="my-fav-map-box-text">
+             <div class="my-fav-map-title-edit">
                <div class="${mapData.fav_id}">
-                 <span class="my-map-title ${mapData.fav_id}">${mapData.title}</span>
-               </div>
-               <div>
-                 <button class="edit-my-map" value="${mapData.fav_id}">Edit</button>
+                 <span class="my-fav-map-title ${mapData.fav_id}">${mapData.title}</span>
                </div>
              </div>
 
-             <div class="my-map-location">
-               <div class="my-map-location-left ${mapData.fav_id}">
+             <div class="my-fav-map-location">
+               <div class="my-fav-map-location-left ${mapData.fav_id}">
                  <i class="fa-solid fa-map-pin"></i>
                  <span>${mapData.city}, ${mapData.country}</span>
                </div>
                <div>
-                 <button class="delete-my-map" value="${mapData.fav_id}">Delete</button>
+                 <button class="delete-my-map" value="${mapData.fav_id}">Remove</button>
                </div>
              </div>
            </div>
@@ -66,7 +63,7 @@ $(document).ready(function() {
       renderPins(db[1], mapData);
 
       // event handler to show big map when click on a small map
-      $(`.${mapData.id}`).click(function(event) {
+      $(`.${mapData.fav_id}`).click(function(event) {
 
         $('#my-fav-map-grid').empty();
         renderSingleMap(mapData, 'map-single')

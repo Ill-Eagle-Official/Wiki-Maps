@@ -15,14 +15,14 @@
   transition: all .2s ease-in-out;
 }
 
-.my-map-box-text {
+.my-fav-map-box-text {
   display: flex;
   flex-direction: column;
   color: hsl(240, 0%, 10%);
   padding: 10px;
 }
 
-.my-map-title-edit {
+.my-fav-map-title-edit {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,19 +30,19 @@
   padding-top: 5px;
 }
 
-.my-map-title {
+.my-fav-map-title {
   font-weight: bold;
   cursor: pointer;
 }
 
-.my-map-location {
+.my-fav-map-location {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
 }
 
-.my-map-content-small-map {
+.my-fav-map-content-small-map {
   height: 300px;
   width: 400px;
   margin: 3px;
@@ -50,7 +50,7 @@
   border-radius: 10px;
 }
 
-.my-map-content-map-single {
+.my-fav-map-content-map-single {
   display: flex;
   flex-direction: column;
   align-items: center;
