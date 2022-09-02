@@ -46,7 +46,8 @@ const mapsRoutes = require('./routes/maps-api');
 const db = require('./db/connection');
 
 const myMapsRoutes = require('./routes/my-maps');
-const { Template } = require('ejs');
+// const newMapRoutes = require('./routes/new_map');
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -54,8 +55,8 @@ const { Template } = require('ejs');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+// app.use('/api/maps/:id', newMapRoutes(db));
 app.use('/api/maps', mapsRoutes(db));
-app.use('/api/maps/:id', mapsRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 app.use('/api/maps', mapsRoutes);

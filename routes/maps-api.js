@@ -9,7 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const { getMaps } = require('../db/queries/maps');
 const { addFavMap } = require('../db/queries/fav-button')
-const { getMapByID, getPins } = require('./helpers');
+const { getPins, insertMap, insertPin } = require('./helpers');
 
 module.exports = function(db) {
 
@@ -21,24 +21,6 @@ router.get('/', (req, res) => {
       res.json([mapsData, pinsData])
     })
   })
-});
-
-router.get("/:id", (req, res) => {
-  const mapID = req.params.id;
-
-  if (!mapID) {
-    res.status(400).send("Invalid map ID");
-    return;
-  }
-
-  getMapByID(db, mapID)
-    .then(reqMap => {
-      console.log(reqMap);
-      res.json(reqMap);
-    })
-    .catch(err => {
-      res.status(500).send("Error getting map from database");
-    });
 });
 
 
@@ -57,6 +39,23 @@ router.post('/favourites/:id', (req, res) => {
       res.send(e)
     });
 });
+
+router.post("/", (req, res) => {
+
+  insertMap({...req.body, user_id: req.session.user_id})
+  .then(newMap => {
+    res.redirect('/my-maps')
+    res.send(newMap);
+  })
+});
+
+router.post('/:id' , (req, res) => {
+
+  insertPin({...req.body, map_id: req.body.id})
+  .then(newPin => {
+    res.send(newPin);
+  })
+})
 
 return router;
 

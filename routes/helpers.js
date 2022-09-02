@@ -53,4 +53,15 @@ const insertMap = (map) => {
   .then(res => res.rows[0]);
 }
 
-module.exports = { getMap, getMapByID, getPinsByMapID, getPins, insertMap };
+// Function to insert new pin into database
+
+const insertPin = (pin) => {
+  return db.query(`
+  INSERT INTO pins (map_id, title, description, image_url, latitude, longitude)
+  VALUES ($1, $2, $3, $4, $5, $6)
+  RETURNING *;
+  `, [pin.map_id, pin.title, pin.description, pin.image_url, pin.latitude, pin.longitude])
+  .then(res => res.rows[0]);
+};
+
+module.exports = { getMap, getMapByID, getPinsByMapID, getPins, insertMap, insertPin };
