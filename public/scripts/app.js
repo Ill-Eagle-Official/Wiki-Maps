@@ -24,11 +24,8 @@ $(document).ready(function () {
     }).addTo(map);
 
     $(`#heart-icon${mapData.id}`).click(function () {
-      console.log(mapData.id)
       $.ajax(`/api/maps/favourites/${mapData.id}`, { method: 'POST' })
-      .then(console.log('.then in ajax post'))
     })
-
   }
 
   const renderPins = function (db, mapData) {
