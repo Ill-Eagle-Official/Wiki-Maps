@@ -15,6 +15,7 @@ const { route } = require('express/lib/application');
 // translate the input data / request body
 router.use(express.urlencoded({ extended: true }));
 
+// render the template with dynamic header
 router.get('/', (req, res) => {
   const templateVars = {
     userId: req.session.user_id
@@ -22,6 +23,7 @@ router.get('/', (req, res) => {
   res.render("my-maps", templateVars)
 })
 
+// routes to load the maps and pins
 router.get('/api', (req, res) => {
   const userId = req.session.user_id;
   getMyMaps(userId)
@@ -33,6 +35,7 @@ router.get('/api', (req, res) => {
   )
 });
 
+// routes to delete a map
 router.post('/delete/:id', (req, res) => {
   mapId = req.params.id;
   deleteMapById(mapId)
