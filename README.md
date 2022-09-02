@@ -7,6 +7,7 @@ The project was completed by Lighthouse Labs students Alexander Jackson, Winnie 
 
 ## Screenshots
 
+Home Page:
 !["Home page"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Home%20page.png)
 !["View single map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/View%20single%20map.png)
 !["Create new map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Create%20new%20map.png)
