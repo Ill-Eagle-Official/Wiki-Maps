@@ -36,8 +36,6 @@ router.get("/:id", (req, res) => {
       // console.log("reqMap is: ", reqMap)
       getPinsByMapID(mapID)
       .then(reqPins => {
-        console.log("reqMap is: ", reqMap)
-        console.log("reqPins is: ", reqPins)
         res.json([reqMap, reqPins]);
       })
     })
@@ -73,9 +71,11 @@ router.post("/", (req, res) => {
 });
 
 router.post('/:id' , (req, res) => {
+  let mapId = req.params.id;
 
-  insertPin({...req.body, map_id: req.body.id})
+  insertPin({...req.body, user_id: req.session.user_id, map_id: mapId})
   .then(newPin => {
+    res.redirect(`/my-maps/edit/${mapId}`)
     res.send(newPin);
   })
 })
