@@ -65,6 +65,7 @@ app.use('/my-maps', myMapsRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+// Renders the homepage
 app.get('/', (req, res) => {
   const templateVars = { // creates dynamic header with/without login
     userId: req.session.user_id
@@ -72,19 +73,15 @@ app.get('/', (req, res) => {
   res.render('index', templateVars);
 });
 
+// Renders the 'create a map' page
 app.get('/new', (req, res) => {
-<<<<<<< HEAD
-  const templateVars = { // creates dynamic header with/without login
-    userId: req.session.user_id
-  };
-=======
   const templateVars = {
     userId: req.session.user_id
-  }
->>>>>>> 052a24275e4164340b15e94eb027a20a44bd7beb
+  };
   res.render('new_map', templateVars);
 });
 
+// Basic login functionality
 app.get('/login/:id', (req, res) => {
   req.session.user_id = req.params.id; // set up cookie session
   res.redirect('/');

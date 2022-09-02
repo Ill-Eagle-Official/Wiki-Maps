@@ -28,6 +28,8 @@
   <body>
     <%- include('partials/_header') %>
 
+    <% if (userId) { %>
+
     <main class="container">
 
     <h1 class="create-header">Create New Map!</h1>
@@ -86,6 +88,20 @@
 
     </div>
     </main>
+
+    <% } else { %>
+
+      <main>
+
+        <h1 style="color: red; display: flex; justify-content: center; margin-top: 20px;"><b>Uh oh! That's an error, fella!</b></h1>
+
+        <h2 style="color: red; display: flex; justify-content: center;"><b>You must be logged in to create a map!</b></h2>
+
+        <div class="tenor-gif-embed" data-postid="22298553" data-share-method="host" data-aspect-ratio="1.33333" data-width="100%"><a href="https://tenor.com/view/thanos-snap-emoji-crying-gif-22298553">Thanos Snap Emoji GIF</a>from <a href="https://tenor.com/search/thanos+snap-gifs">Thanos Snap GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+      </main>
+
+    <% } %>
 
 
 
