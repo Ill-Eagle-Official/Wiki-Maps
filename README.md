@@ -7,11 +7,28 @@ The project was completed by Lighthouse Labs students Alexander Jackson, Winnie 
 
 ## Screenshots
 
-Home Page:
+Home Page
+
 !["Home page"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Home%20page.png)
+
+
+Single Map View
+
 !["View single map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/View%20single%20map.png)
+
+
+Create A New Map
+
 !["Create new map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Create%20new%20map.png)
+
+
+Edit Map
+
 !["Edit map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Edit%20map.png)
+
+
+Delete My Map
+
 !["Delete my map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Delete%20warning%20-%20my%20maps.png)
 
 
