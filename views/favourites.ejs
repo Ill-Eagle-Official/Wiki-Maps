@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/my-maps.css" />
+  <link rel="stylesheet" href="/styles/favourites.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -19,7 +19,7 @@
     crossorigin="" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/my-maps.js"></script>
+  <script type="text/javascript" src="/scripts/favourites.js"></script>
   <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
   crossorigin=""></script>
@@ -36,23 +36,9 @@
 
 <body>
   <%- include('partials/_header') %>
-
-  <% if (!userId) {%>
-
-  <h1 style="color: red; display: flex; justify-content: center; margin-top: 20px;">Oh noes!! That's an error, dude!</h1>
-
-  <h2 style="color: red; display: flex; justify-content: center; margin-top: 20px;">You need to be logged in to look at maps!</h2>
-
-  <a href="/gif/you-have-failed-the-vibe-check-4ne05h" title="YOU HAVE FAILED THE VIBE CHECK"><img src="https://i.makeagif.com/media/3-27-2020/4ne05h.gif" alt="YOU HAVE FAILED THE VIBE CHECK"></a>
-
-  <% } else { %>
-
   <h1></h1>
-  <div id="my-map-grid">
+  <div id="my-fav-map-grid">
   </div>
-
-  <% } %>
-
 </body>
 
 </html>

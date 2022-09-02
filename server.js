@@ -44,8 +44,8 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const mapsRoutes = require('./routes/maps-api');
 const db = require('./db/connection');
-
 const myMapsRoutes = require('./routes/my-maps');
+const favouritesRoutes = require('./routes/favourites');
 const { Template } = require('ejs');
 
 // Mount all resource routes
@@ -54,16 +54,18 @@ const { Template } = require('ejs');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+// app.use('/api/maps/:id', newMapRoutes(db));
 app.use('/api/maps', mapsRoutes(db));
-app.use('/api/maps/:id', mapsRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 app.use('/api/maps', mapsRoutes);
 app.use('/my-maps', myMapsRoutes);
+app.use('/favourites', favouritesRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+// Renders the homepage
 app.get('/', (req, res) => {
   const templateVars = { // creates dynamic header with/without login
     userId: req.session.user_id
@@ -71,18 +73,19 @@ app.get('/', (req, res) => {
   res.render('index', templateVars);
 });
 
+// Renders the 'create a map' page
 app.get('/new', (req, res) => {
   const templateVars = {
     userId: req.session.user_id
-  }
+  };
   res.render('new_map', templateVars);
 });
 
+// Basic login functionality
 app.get('/login/:id', (req, res) => {
   req.session.user_id = req.params.id; // set up cookie session
   res.redirect('/');
 })
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

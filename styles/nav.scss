@@ -35,3 +35,13 @@ nav {
   color: black;
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+  .nav-link-logged-in {
+    font-size: small;
+  }
+
+  .nav-login-register {
+    font-size: small;
+  }
+}
