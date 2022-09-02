@@ -43,7 +43,7 @@ router.post('/delete/:id', (req, res) => {
 })
 
 router.get("/edit/:id", (req, res) => {
-  console.log(getPins());
+
   const templateVars = {
     mapId: req.params.id,
     userId: req.session.user_id

@@ -33,13 +33,19 @@ router.get("/:id", (req, res) => {
 
   getMapByID(db, mapID)
     .then(reqMap => {
-      console.log(reqMap);
-      res.json(reqMap);
+      // console.log("reqMap is: ", reqMap)
+      getPinsByMapID(mapID)
+      .then(reqPins => {
+        console.log("reqMap is: ", reqMap)
+        console.log("reqPins is: ", reqPins)
+        res.json([reqMap, reqPins]);
+      })
     })
     .catch(err => {
       res.status(500).send("Error getting map from database");
     });
 });
+
 
 
 router.post('/favourites/:id', (req, res) => {

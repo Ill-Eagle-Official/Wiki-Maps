@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log("Hello are you here?")
 
   let map;
 
