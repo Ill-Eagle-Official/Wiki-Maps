@@ -1,3 +1,21 @@
+# Wiki-Maps Project
+
+Wiki-Maps is a web app that allows users to collaboratively create maps which list multiple points. For example: "Best Places to Eat Around Town" or
+"Location of Movie Scenes".
+
+The project was completed by Lighthouse Labs students Alexander Jackson, Winnie Li and Ryan Fortin.
+
+## Screenshots
+
+!["Home page"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Home%20page.png)
+!["View single map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/View%20single%20map.png)
+!["Create new map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Create%20new%20map.png)
+!["Edit map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Edit%20map.png)
+!["Delete my map"](https://github.com/OfficialBirdDaddy/Wiki-Maps/blob/master/docs/Delete%20warning%20-%20my%20maps.png)
+
+
+
+
 LHL Node Skeleton
 =========
 
