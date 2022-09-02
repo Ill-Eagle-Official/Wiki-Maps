@@ -40,6 +40,7 @@ $(document).ready(function() {
       }).addTo(map);
   }
 
+  // render pins for a map
   const renderPins = function(db, mapData) {
     for (let pin of db) {
       if (pin.map_id === mapData.id) {

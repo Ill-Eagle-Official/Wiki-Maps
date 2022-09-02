@@ -15,6 +15,7 @@ const { route } = require('express/lib/application');
 // translate the input data / request body
 router.use(express.urlencoded({ extended: true }));
 
+
 // render the template with dynamic header
 router.get('/', (req, res) => {
   const templateVars = {
@@ -26,11 +27,16 @@ router.get('/', (req, res) => {
 // routes to load favourite maps and pins
 router.get('/api', (req, res) => {
   const userId = req.session.user_id;
+  // console.log("user id is: ", userId)
   getFavourites(userId)
   .then(myMapsData => {
+    console.log("favourites are: ", myMapsData);
     getPins()
-    .then(pinsData =>
-      res.json([myMapsData, pinsData]))
+    .then(pinsData => {
+      // console.log("myMapsData is: ", myMapsData);
+      // console.log("pinsData is: ", pinsData);
+      res.json([myMapsData, pinsData])
+    });
     }
   )
 });

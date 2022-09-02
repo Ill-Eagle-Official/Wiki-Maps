@@ -2,7 +2,11 @@ const db = require('../connection');
 
 // Function to get favourite maps given a user id
 const getFavourites = (userId) => {
-  return db.query(`SELET * FROM favourites WHERE user_id = $1`, [userID])
+  return db.query(`
+  SELECT favourites.id as fav_id, favourites.user_id, favourites.map_id, maps.title as title, maps.country as country, maps.city as city, maps.latitude as latitude, maps.longitude as longitude, maps.zoom as zoom
+  FROM favourites
+  JOIN maps ON maps.id = favourites.map_id
+  WHERE favourites.user_id = $1`, [userId])
     .then(data => {
       return data.rows;
     })
