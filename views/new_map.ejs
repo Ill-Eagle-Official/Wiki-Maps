@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head >
-    <title>Map</title>
+    <title>Create a Map</title>
 
     <!-- BOOTSTRAP CSS -->
 
@@ -28,6 +28,8 @@
   <body>
     <%- include('partials/_header') %>
 
+    <% if (userId) { %>
+
     <main class="container">
 
     <h1 class="create-header">Create New Map!</h1>
@@ -39,24 +41,24 @@
       <script>
         // Blank map centred on Vancouver
         let map = L.map('mapid').setView([49.2827, -123.1207], 11);
-        let mapLat;
-        let mapLng;
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
-          attribution: '© OpenStreetMap'
+          attribution: '© OpenStreetMap',
+          draggable: true
         }).addTo(map);
 
         map.on('moveend'
           , function() {
             let center = map.getCenter();
+            let zoom = map.getZoom();
             let lat = center.lat;
             let lng = center.lng;
 
-            mapLat = lat;
-            mapLng = lng;
-
-            console.log(mapLat, mapLng);
+            console.log(lat, lng, zoom);
+            document.getElementById('zoom').value = zoom;
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lng;
           }
         );
 
@@ -71,6 +73,9 @@
       <form action="/api/maps" method="POST">
 
         <label for="title">Title</label>
+        <input type="hidden" name="zoom" id="zoom">
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
         <input type="text" name="title" id="title" placeholder="Enter a fitting title!" required>
         <label for="latitude">Country</label>
         <input type="text" name="country" id="country" placeholder="Enter your country..." required>
@@ -83,6 +88,20 @@
 
     </div>
     </main>
+
+    <% } else { %>
+
+      <main>
+
+        <h1 style="color: red; display: flex; justify-content: center; margin-top: 20px;"><b>Uh oh! That's an error, fella!</b></h1>
+
+        <h2 style="color: red; display: flex; justify-content: center;"><b>You must be logged in to create a map!</b></h2>
+
+        <div class="tenor-gif-embed" data-postid="22298553" data-share-method="host" data-aspect-ratio="1.33333" data-width="100%"><a href="https://tenor.com/view/thanos-snap-emoji-crying-gif-22298553">Thanos Snap Emoji GIF</a>from <a href="https://tenor.com/search/thanos+snap-gifs">Thanos Snap GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+      </main>
+
+    <% } %>
 
 
 
